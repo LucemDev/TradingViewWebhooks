@@ -18,16 +18,12 @@ The API is accessed via https endpoint. An API key and Secret is required as Aut
 2. Sample Calls
 
 
-You can get your API keys by filling this form here, and the admins will get back to you
-// create a form to collect site, name, email, purpose details
-
-
 ### Usage
 
-In this demo, we will use axios, a JavaScript Request library to make https calls.
-
 We created a demo setup template to offer the simplest connection. 
-This is a web page compiled using svelte that takes in your inputs using queries and generate the forms required for a successful creation, update, delete of a ussers webhook.
+This is a web page compiled using svelte that takes in your inputs using queries and generate the forms required for a successful creation, updating, deletion of user's webhook.
+
+The HTTPs endpoints are described [below](#api-calls)
 
 #### Web Template
 

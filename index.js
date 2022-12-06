@@ -27,16 +27,6 @@ const sendRequest = (path, method="GET", data={}) => {
     })
 }
 
-//5. Upgrade A Webhook - (IP Restriction Required)
-sendRequest( "/upgrade/8zwDEkwUOMCVGyFvAUSM", "POST").then(res => {
-
-    console.log("Webhook Expiry extended by 1 month")
-
-}).catch(error => console.error(error.message))
-
-
-return;
-
 //1. Get Platform
 sendRequest("/platforms").then(platforms => {
 

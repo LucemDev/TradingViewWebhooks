@@ -31,7 +31,7 @@ This is a web page compiled using svelte that takes in your inputs using queries
 
 #### Web Template
 
-  ![image](https://user-images.githubusercontent.com/22216995/205655533-276b4a60-c888-4af6-99d5-7ea07c392b98.png)
+![image](https://user-images.githubusercontent.com/22216995/205655533-276b4a60-c888-4af6-99d5-7ea07c392b98.png)
 
 https://sell.tradingview.to/setup.html?apiKey=XXXXXXXXXX&apiSecret=XXXXXXXXXX-XXX-XXXXXXXXXX&phoneNumber=1234567890
 
@@ -47,6 +47,9 @@ Params required:
 Endpoint: https://api.tradingview.to
 
 Authorization: Pass Headers **apiKey** and **apiSecret**
+
+See examples
+- [Javascript](./index.js)
 
 Functions
 ```

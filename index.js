@@ -4,8 +4,8 @@ const API = "https://api.tradingview.to"
 
 const config = {
     headers: {
-        apiKey: "hbZ27zEeHDQW3xszaIzqnb67LRJ2",
-        apiSecret: "ebe4f7f4-6b92-4bae-a3a7-1fdfc20c5f2b"
+        apiKey: "",
+        apiSecret: ""
     }
 }
 

@@ -42,28 +42,31 @@ Params required:
 
 Endpoint: https://api.tradingview.to
 
-Authorization: Pass Headers **apiKey** and **apiSecret**
+Authorization: Pass Headers **Key** and **Secret**
 
 See examples
 - [Javascript](./index.js)
 
 Functions
 ```
-GET /platforms -> returns an object of allowed platforms
-
-POST /activation \
-    body requires {phoneNumber, platform, name} and platform input requirements \
-    if id is passed, an update to the id is made if the webhook is valid
-    -> returns a new webhook if successful
-
-GET /activations?phoneNumber=1234567890 \
-    optional param phoneNumber \
-    -> returns a list of webhooks
-
-POST /upgrade/id -> requests an upgrade to the webhook id
-
-DELETE /activation/id -> schedules webhook deletion in 30 days
+GET /platforms                          -> returns an object of allowed platforms
+POST /activation/platform?email/phone	-> create webhook
+GET /activations?email/phone		    -> get user webhooks
+PATCH /activation/platform/ID?email/phone -> update a user webhook
+POST /upgrade/ID			            -> Add days to a user webhook
+DELETE /activation/ID			        -> Schedule a webhook for deletion in 30 days
 ```
+
+Errors
+200 - Success
+201 - Created
+202 - Accepted
+400 - Bad Data Request
+401 - Unauthorized
+402 - Payment Required
+404 - Not Found 
+406 - Bad User Phone/email
+500 - Server Error
 
 
 

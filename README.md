@@ -48,25 +48,31 @@ See examples
 - [Javascript](./index.js)
 
 Functions
-```
-GET /platforms                          -> returns an object of allowed platforms
-POST /activation/platform?email/phone	-> create webhook
-GET /activations?email/phone		    -> get user webhooks
-PATCH /activation/platform/ID?email/phone -> update a user webhook
-POST /upgrade/ID			            -> Add days to a user webhook
-DELETE /activation/ID			        -> Schedule a webhook for deletion in 30 days
-```
 
-Errors
-200 - Success
-201 - Created
-202 - Accepted
-400 - Bad Data Request
-401 - Unauthorized
-402 - Payment Required
-404 - Not Found 
-406 - Bad User Phone/email
-500 - Server Error
+| Method |  Endpoint   | Function  |
+|--------|-------------|-----------|
+| GET    |/platforms                             |returns an object of allowed platforms
+| POST   |/activation/platform?email/phone	     |create webhook
+| GET    |/activations?email/phone		         |get user webhooks
+| PATCH  |/activation/platform/ID?email/phone    |update a user webhook
+| POST   |/upgrade/ID			                 |Add days to a user webhook
+| DELETE |/activation/ID			             |schedule a webhook for deletion in 30 days
+
+
+#### Error Codes
+
+| Status Code | Description                 |
+|-------------|-----------------------------|
+| 200         | Success                     |
+| 201         | Created                     |
+| 202         | Accepted                    |
+| 400         | Bad Data Request            |
+| 401         | Unauthorized                |
+| 402         | Payment Required            |
+| 404         | Not Found                   |
+| 406         | Bad User Phone/email        |
+| 500         | Server Error                |
+
 
 
 

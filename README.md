@@ -1,62 +1,66 @@
 # TradingView To Anywhere
 
-### This is an API to create webhooks using [TradingView.To](https://tradingview.to) for clients that can be used to automate alerts to anywhere you want them to go.
+### This is an API to create webhooks using [TradingView.To/Anywhere](https://tradingview.to) for clients that can be used to automate alerts to anywhere you want them to go.
 
 ---
 
 ### Supported Platforms
-- telegram
-- discord
-- google sheet
+- Telegram
+- Discord
+- Googlesheet
+- Metatrader 4
+- Metatrader 5
+- Binance
+- Binance US
+- Bybit
+- IQ Option
+- Kucoin
+
 
 ---
 
 ### Access
 
-The API is accessed via https endpoint. An API key and Secret is required as Authorization and User Phone Number to create, update or delete any webhooks
-1. Setup Web Template
-2. Sample Calls
-
-
-### Usage
-
-We created a demo setup template to offer the simplest connection. 
-This is a web page compiled using svelte that takes in your inputs using queries and generate the forms required for a successful creation, updating, deletion of user's webhook.
-
-The HTTPs endpoints are described [below](#api-calls)
-
-#### Web Template
-
-![image](https://user-images.githubusercontent.com/22216995/205655533-276b4a60-c888-4af6-99d5-7ea07c392b98.png)
-
-https://sell.tradingview.to/setup.html?apiKey=XXXXXXXXXX&apiSecret=XXXXXXXXXX-XXX-XXXXXXXXXX&phoneNumber=1234567890
-
-Params required: 
-1. apiKey &
-2. apiSecret: you receive after approval
-3. phoneNumber: clients phone number
-4. limit: Maximum number of webhooks for a user. Default is 3
+The API is accessed via https endpoint. An API key and Secret is required as Authorization to create, update or delete any webhooks.
+To get your API Keys, Visit [TTA Dashboard](https://dashboard.tradingview.to)
 
 
 #### API calls
 
-Endpoint: https://api.tradingview.to
+BASE URL Endpoint: https://api.tradingview.to
 
-Authorization: Pass Headers **Key** and **Secret**
+Authorization: Pass Headers/Query Params **Key** and **Secret**
 
 See examples
-- [Javascript](./index.js)
+- [Javascript](./index.js) using axios
 
-Functions
+##### Functions
 
-| Method |  Endpoint   | Function  |
-|--------|-------------|-----------|
-| GET    |/platforms                             |returns an object of allowed platforms
-| POST   |/activation/platform?email/phone	     |create webhook
-| GET    |/activations?email/phone		         |get user webhooks
-| PATCH  |/activation/platform/ID?email/phone    |update a user webhook
-| POST   |/upgrade/ID			                 |Add days to a user webhook
-| DELETE |/activation/ID			             |schedule a webhook for deletion in 30 days
+| Method |  Endpoint   | Function                                   | Permission |
+|--------|-------------|--------------------------------------------|------------|
+| GET    |/platforms                     | returns an object of allowed platforms     | 1          |
+| POST   |/activation/{PLATFORM_ID}	     | create webhook                             | 2          |
+| GET    |/activations	         | get users webhooks                         | 1          |
+| PATCH  |/activation/{PLATFORM_ID}/{WEBHOOK_ID} | update a user webhook    | 2          |        
+| POST   |/upgrade/ID			                 | Add days to a user webhook     | 1          |       
+| DELETE |/activation/ID			             | schedule a webhook for deletion in 30 days | 2          |
+
+
+###### Notes
+
+Each platform returned contain an array of required fields in **setup** field. If the input is empty, then that is not a required step. The name of the input is included in the tag. For example. Telegram requires an input __number__ named tag __chat__. **Name** Field is required for each webhook.
+
+Creating or Updating a webhook requires a user email or phone passed in the query. Example `/activation/telegram?email=test@email.com`
+
+
+
+##### Permission Levels
+
+| Level |   Description |
+|-------|---------------|
+| 1     |   API Key& Secret Required |
+| 2     |   User Email/Phone Required |
+| 3     |   IP Address Lock |
 
 
 #### Error Codes

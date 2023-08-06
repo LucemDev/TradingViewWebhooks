@@ -4,7 +4,7 @@ const API = "https://api.tradingview.to"
 
 const config = {
     headers: {
-        key: "TPzareUwsg0Ojq5KlkzY",
+        key: "FIuRdQtfqMAxhqZ7qySX",
         secret: "VInsKs7wtTaeDmgRBGu9OTMGpmm1"
     }
 }
@@ -36,9 +36,10 @@ sendRequest("/platforms").then(platforms => {
     console.log("Platforms", platforms.data)
 
     //2. Create Webhook - (Site Restriction Required)
-    sendRequest("/activation/telegram?email=test@gmail.com", "POST", {
+    sendRequest("/activation/mt4?email=test@gmail.com", "POST", {
         name: "John Doe",
-        chat: "-123456789"
+        chat: "-123456789",
+        api_key: "asdfasd"
     }).then(webhook => {
 
         console.log("Created", webhook.data)
